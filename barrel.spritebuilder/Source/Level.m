@@ -7,21 +7,23 @@
 //
 
 #import "Level.h"
+#import "Barrel.h"
 
 @implementation Level
 {
     CCPhysicsNode *_physicsNode;
 
     CCNode *_currentpirate;
-    CCNode *_barrel2;
+    Barrel *_barrel1;
+    Barrel *_barrel2;
 }
 - (void)launchPirate {
-    CCLOG(@"%f", _barrel2.position.x);
+    CCLOG(@"%f", _barrel1.position.x);
 
     // loads the pirate.ccb we have set up in Spritebuilder
     CCNode* pirate = [CCBReader load:@"pirate"];
     // position the pirate at the bowl of the catapult
-    pirate.position = ccpAdd(_barrel2.position, ccp(16, 50));
+    pirate.position = ccpAdd(_barrel1.position, ccp(16, 50));
     
     // add the pirate to the physicsNode of this scene (because it has physics enabled)
     [_physicsNode addChild:pirate];
