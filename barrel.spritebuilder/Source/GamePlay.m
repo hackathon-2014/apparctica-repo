@@ -11,13 +11,16 @@
 @implementation GamePlay{
     CCPhysicsNode *_physicsNode;
     CCNode *_catapultArm;
-    CCNode *_levelNode;
     CCNode *_contentNode;
     CCNode *_pullbackNode;
     CCNode *_mouseJointNode;
     CCPhysicsJoint *_mouseJoint;
-    CCNode *_currentpirate;
     CCPhysicsJoint *_pirateCatapultJoint;
+    
+    CCNode *_levelNode;
+    CCNode *_currentpirate;
+    CCNode *_barrel;
+    Level *_currentLevel;
 }
 
 - (void)didLoadFromCCB {
@@ -29,11 +32,12 @@
     _pullbackNode.physicsBody.collisionMask = @[];
     _mouseJointNode.physicsBody.collisionMask = @[];
     
-    CCScene *level = [CCBReader load:@"levels/test_small"];
-    [_levelNode addChild:level];
+    //type cast to Level
+    _currentLevel = (Level *)[CCBReader load:@"levels/Level"];
+    [_levelNode addChild:_currentLevel];
 }
 
--(void)followPirateTest{
+-(void)shootBarrel{
     
 }
 
@@ -41,15 +45,21 @@
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CCLOG(@"touch began!");
-    CGPoint touchLocation = [touch locationInNode:_contentNode];
-    _currentpirate = [CCBReader load:@"pirate"];
-    //CGPoint piratePosition = [_catapultArm convertToWorldSpace:ccp(34, 138)];
-    _currentpirate.position = [_physicsNode convertToNodeSpace:touchLocation];
-[_physicsNode addChild:_currentpirate];
-    // follow the flying pirate
-    CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentpirate worldBoundary:self.boundingBox];
-    [_contentNode runAction:follow];
+    //TODO shoot pirate if inside barrel
+    [_currentLevel launchPirate];
+//    CCLOG(@"%f", _currentLevel._barrel2.position.x);
+
+   
     
+//    CGPoint touchLocation = [touch locationInNode:_contentNode];
+//    _currentpirate = [CCBReader load:@"pirate"];
+//    //CGPoint piratePosition = [_catapultArm convertToWorldSpace:ccp(34, 138)];
+//    _currentpirate.position = [_physicsNode convertToNodeSpace:touchLocation];
+//[_physicsNode addChild:_currentpirate];
+//    // follow the flying pirate
+//    CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentpirate worldBoundary:self.boundingBox];
+//    [_contentNode runAction:follow];
+//    
     
 
     
@@ -64,7 +74,7 @@
 //    
 //        // create a pirate from the ccb-file
 //        _currentpirate = [CCBReader load:@"pirate"];
-//        // initially position it on the scoop. 34,138 is the position in the node space of the _catapultArm
+        // initially position it on the scoop. 34,138 is the position in the node space of the _catapultArm
 //        CGPoint piratePosition = [_catapultArm convertToWorldSpace:ccp(34, 138)];
 //        // transform the world position to the node space to which the pirate will be added (_physicsNode)
 //        _currentpirate.position = [_physicsNode convertToNodeSpace:piratePosition];
@@ -117,27 +127,7 @@
     }
 }
 
-- (void)launchpirate {
-    // loads the pirate.ccb we have set up in Spritebuilder
-    CCNode* pirate = [CCBReader load:@"pirate"];
-    // position the pirate at the bowl of the catapult
-    pirate.position = ccpAdd(_catapultArm.position, ccp(16, 50));
-    
-    // add the pirate to the physicsNode of this scene (because it has physics enabled)
-    [_physicsNode addChild:pirate];
-    
-    // manually create & apply a force to launch the pirate
-    CGPoint launchDirection = ccp(1, 0);
-    CGPoint force = ccpMult(launchDirection, 8000);
-    [pirate.physicsBody applyForce:force];
-    
-    // ensure followed object is in visible are when starting
-    self.position = ccp(0, 0);
-    CCActionFollow *follow = [CCActionFollow actionWithTarget:pirate worldBoundary:self.boundingBox];
-    [self runAction:follow];
-    [_contentNode runAction:follow];
-    
-}
+
 
 -(void)retry {
     // reload this level

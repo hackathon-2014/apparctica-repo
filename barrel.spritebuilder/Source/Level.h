@@ -1,5 +1,5 @@
 //
-//  GamePlay.h
+//  Level.h
 //  barrel
 //
 //  Created by Jason Rikard on 8/23/14.
@@ -7,8 +7,10 @@
 //
 
 #import "CCNode.h"
-#import "Level.h"
 
-@interface GamePlay : CCNode
+@interface Level : CCNode
 
+//@property CCNode *_barrel2;
+
+- (void)launchPirate;
 @end

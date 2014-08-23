@@ -1,14 +1,13 @@
 //
-//  GamePlay.h
+//  temp.m
 //  barrel
 //
 //  Created by Jason Rikard on 8/23/14.
 //  Copyright (c) 2014 Apportable. All rights reserved.
 //
 
-#import "CCNode.h"
-#import "Level.h"
+#import "temp.h"
 
-@interface GamePlay : CCNode
+@implementation temp
 
 @end

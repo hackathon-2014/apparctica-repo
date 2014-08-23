@@ -1,5 +1,5 @@
 //
-//  GamePlay.h
+//  Barrel.h
 //  barrel
 //
 //  Created by Jason Rikard on 8/23/14.
@@ -7,8 +7,7 @@
 //
 
 #import "CCNode.h"
-#import "Level.h"
 
-@interface GamePlay : CCNode
+@interface Barrel : CCNode
 
 @end
