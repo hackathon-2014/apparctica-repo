@@ -49,6 +49,8 @@
     // follow the flying pirate
     CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentpirate worldBoundary:self.boundingBox];
     [_contentNode runAction:follow];
+    
+    
 
     
     // start catapult dragging when a touch inside of the catapult arm occurs
