@@ -27,15 +27,15 @@
     [_physicsNode addChild:pirate];
     
     // manually create & apply a force to launch the pirate
-    CGPoint launchDirection = ccp(0, 1);
-    CGPoint force = ccpMult(launchDirection, 8000);
+    CGPoint launchDirection = ccp(60, 50);
+    CGPoint force = ccpMult(launchDirection, 400);
     [pirate.physicsBody applyForce:force];
     
     // ensure followed object is in visible are when starting
 //    self.position = ccp(_barrel2.position.x, _barrel2.position.y);
 //    CCActionFollow *follow = [CCActionFollow actionWithTarget:pirate worldBoundary:self.boundingBox];
 //    [self runAction:follow];
-    
+//    
 }
 
 @end
