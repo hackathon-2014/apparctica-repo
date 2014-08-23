@@ -39,7 +39,6 @@
 		EC4F4E1019A8E332008B09D3 /* pirate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4F4E0F19A8E332008B09D3 /* pirate.m */; };
 		EC4F4E1319A8E387008B09D3 /* GamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4F4E1219A8E387008B09D3 /* GamePlay.m */; };
 		EC4F4E1619A91855008B09D3 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4F4E1519A91855008B09D3 /* Level.m */; };
-		EC4F4E1919A919FE008B09D3 /* temp.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4F4E1819A919FE008B09D3 /* temp.m */; };
 		EC4F4E1C19A92D72008B09D3 /* Barrel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4F4E1B19A92D72008B09D3 /* Barrel.m */; };
 /* End PBXBuildFile section */
 
@@ -101,8 +100,6 @@
 		EC4F4E1219A8E387008B09D3 /* GamePlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GamePlay.m; path = Source/GamePlay.m; sourceTree = "<group>"; };
 		EC4F4E1419A91855008B09D3 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level.h; path = Source/Level.h; sourceTree = "<group>"; };
 		EC4F4E1519A91855008B09D3 /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Level.m; path = Source/Level.m; sourceTree = "<group>"; };
-		EC4F4E1719A919FE008B09D3 /* temp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = temp.h; path = Source/temp.h; sourceTree = "<group>"; };
-		EC4F4E1819A919FE008B09D3 /* temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = temp.m; path = Source/temp.m; sourceTree = "<group>"; };
 		EC4F4E1A19A92D72008B09D3 /* Barrel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Barrel.h; path = Source/Barrel.h; sourceTree = "<group>"; };
 		EC4F4E1B19A92D72008B09D3 /* Barrel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Barrel.m; path = Source/Barrel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,8 +147,6 @@
 				EC4F4E1219A8E387008B09D3 /* GamePlay.m */,
 				EC4F4E1419A91855008B09D3 /* Level.h */,
 				EC4F4E1519A91855008B09D3 /* Level.m */,
-				EC4F4E1719A919FE008B09D3 /* temp.h */,
-				EC4F4E1819A919FE008B09D3 /* temp.m */,
 				EC4F4E1A19A92D72008B09D3 /* Barrel.h */,
 				EC4F4E1B19A92D72008B09D3 /* Barrel.m */,
 			);
@@ -366,7 +361,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC4F4E1619A91855008B09D3 /* Level.m in Sources */,
-				EC4F4E1919A919FE008B09D3 /* temp.m in Sources */,
 				EC4F4E1019A8E332008B09D3 /* pirate.m in Sources */,
 				EC4F4E1C19A92D72008B09D3 /* Barrel.m in Sources */,
 				EC4F4E1319A8E387008B09D3 /* GamePlay.m in Sources */,

@@ -22,8 +22,18 @@
 - (void)didLoadFromCCB {
     _physicsNode.collisionDelegate = self;
 }
+
+-(void)update:(CCTime)dt
+{
+    
+}
+
 - (void)launchPirate {
     CCLOG(@"%f", _barrel1.position.x);
+    
+    _barrel2.isCurrent = true;
+    CCActionFollow *follow = [CCActionFollow actionWithTarget:_barrel2 worldBoundary:self.boundingBox];
+    [self runAction:follow];
 
     // loads the pirate.ccb we have set up in Spritebuilder
     CCNode* pirate = [CCBReader load:@"pirate"];
