@@ -7,10 +7,10 @@
 //
 
 #import "CCNode.h"
+#import "CCPhysics+ObjectiveChipmunk.h"
 
-@interface Level : CCNode
+@interface Level : CCNode <CCPhysicsCollisionDelegate>
 
-//@property CCNode *_barrel2;
 
 - (void)launchPirate;
 @end

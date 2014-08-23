@@ -16,6 +16,11 @@
     CCNode *_currentpirate;
     Barrel *_barrel1;
     Barrel *_barrel2;
+    Barrel *_currentBarrel;
+}
+
+- (void)didLoadFromCCB {
+    _physicsNode.collisionDelegate = self;
 }
 - (void)launchPirate {
     CCLOG(@"%f", _barrel1.position.x);
@@ -40,4 +45,9 @@
 //    
 }
 
+
+-(void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair pirate:(CCNode *)nodeA Barrel:(CCNode *)nodeB
+{
+    CCLOG(@"Barrel collided with a pirate!");
+}
 @end

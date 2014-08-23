@@ -10,4 +10,19 @@
 
 @implementation pirate
 
+
+- (id)init {
+    self = [super init];
+
+    if (self) {
+        // initialize instance variables here
+    }
+    
+    return self;
+}
+
+- (void)didLoadFromCCB {
+    self.physicsBody.collisionType = @"pirate";
+}
+
 @end

@@ -10,4 +10,11 @@
 
 @implementation Barrel
 
+
+- (void)didLoadFromCCB {
+    self.physicsBody.collisionType = @"Barrel";
+    CCLOG(@"barrel loaded!");
+
+}
+
 @end

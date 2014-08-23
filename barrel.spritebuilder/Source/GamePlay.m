@@ -27,6 +27,7 @@
     // tell this scene to accept touches
     self.userInteractionEnabled = TRUE;
     _physicsNode.debugDraw = TRUE;
+//    _physicsNode.collisionDelegate = self;
     
     // nothing shall collide with our invisible nodes
     _pullbackNode.physicsBody.collisionMask = @[];
@@ -37,9 +38,7 @@
     [_levelNode addChild:_currentLevel];
 }
 
--(void)shootBarrel{
-    
-}
+
 
 // called on every touch in this scene
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
