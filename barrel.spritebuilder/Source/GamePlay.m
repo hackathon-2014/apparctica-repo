@@ -29,7 +29,7 @@
     _pullbackNode.physicsBody.collisionMask = @[];
     _mouseJointNode.physicsBody.collisionMask = @[];
     
-    CCScene *level = [CCBReader load:@"levels/Level1"];
+    CCScene *level = [CCBReader load:@"levels/test_small"];
     [_levelNode addChild:level];
 }
 
