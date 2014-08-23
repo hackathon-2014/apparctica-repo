@@ -14,6 +14,5 @@
 -(void)play{
     CCScene *gameplayScene = [CCBReader loadAsScene:@"GamePlay"];
     [[CCDirector sharedDirector] replaceScene:gameplayScene];
-    CCLOG(@"Clicked play!");
 }
 @end

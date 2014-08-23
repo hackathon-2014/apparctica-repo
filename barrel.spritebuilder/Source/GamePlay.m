@@ -133,4 +133,10 @@
     [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"GamePlay"]];
 }
 
+
+-(void)pause {
+    // reload this level
+    [[CCDirector sharedDirector] pushScene:[CCBReader loadAsScene:@"PauseScene"]];
+}
+
 @end

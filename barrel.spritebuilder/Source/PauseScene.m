@@ -10,4 +10,25 @@
 
 @implementation PauseScene
 
+
+-(void)resume {
+    // reload this level
+    [[CCDirector sharedDirector] popScene];
+}
+
+-(void)quit {
+    // quit to menu
+    CCScene *gameplayScene = [CCBReader loadAsScene:@"MainScene"];
+    [[CCDirector sharedDirector] replaceScene:gameplayScene];
+    CCLOG(@"quit");
+
+}
+
+-(void)restart {
+    //TODO this isn't correct.  It adds a scene on top of the old one :(
+    CCScene *gameplayScene = [CCBReader loadAsScene:@"GamePlay"];
+    [[CCDirector sharedDirector] replaceScene:gameplayScene];
+}
+
+
 @end
