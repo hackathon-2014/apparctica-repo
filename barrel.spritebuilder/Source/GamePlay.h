@@ -11,4 +11,6 @@
 
 @interface GamePlay : CCNode
 
+-(void)updateClock;
+
 @end

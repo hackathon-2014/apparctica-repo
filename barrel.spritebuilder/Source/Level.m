@@ -32,9 +32,7 @@
 - (void)launchPirate {
 //    CCLOG(@"%f", _barrel1.rotation);
     
-    _barrel2.isCurrent = true;
-    CCActionFollow *follow = [CCActionFollow actionWithTarget:_barrel2 worldBoundary:self.boundingBox];
-    [self runAction:follow];
+    
 
     // loads the pirate.ccb we have set up in Spritebuilder
     CCNode* pirate = [CCBReader load:@"pirate"];
@@ -64,5 +62,8 @@
 {
 //    CCLOG(@"Barrel collided with a pirate!");
     _currentBarrel = nodeB;
+    
+    CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentBarrel worldBoundary:self.boundingBox];
+    [self runAction:follow];
 }
 @end

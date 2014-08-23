@@ -21,6 +21,9 @@
     CCNode *_currentpirate;
     CCNode *_barrel;
     Level *_currentLevel;
+    CCLabelTTF *_gameClock;
+    
+    int *_time;
 }
 
 - (void)didLoadFromCCB {
@@ -36,8 +39,16 @@
     //type cast to Level
     _currentLevel = (Level *)[CCBReader load:@"levels/Level"];
     [_levelNode addChild:_currentLevel];
+    
+    [self schedule:@selector(updateClock) interval:10];
+    _time = 0;
 }
 
+-(void)updateClock
+{
+    _time++;
+    _gameClock.string = [NSString stringWithFormat:@"%d", _time];
+}
 
 
 // called on every touch in this scene
