@@ -37,6 +37,11 @@
     [_levelNode addChild:_currentLevel];
 }
 
+-(void)update:(CCTime)delta
+{
+    
+}
+
 -(void)shootBarrel{
     
 }
@@ -45,6 +50,7 @@
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CCLOG(@"touch began!");
+        
     //TODO shoot pirate if inside barrel
     [_currentLevel launchPirate];
 //    CCLOG(@"%f", _currentLevel._barrel2.position.x);

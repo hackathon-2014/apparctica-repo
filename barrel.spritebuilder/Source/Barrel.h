@@ -10,4 +10,6 @@
 
 @interface Barrel : CCNode
 
+@property bool *isCurrent;
+
 @end
