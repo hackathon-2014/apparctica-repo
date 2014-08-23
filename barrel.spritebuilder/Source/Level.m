@@ -29,7 +29,7 @@
 }
 
 - (void)launchPirate {
-    CCLOG(@"%f", _barrel1.position.x);
+//    CCLOG(@"%f", _barrel1.rotation);
     
     _barrel2.isCurrent = true;
     CCActionFollow *follow = [CCActionFollow actionWithTarget:_barrel2 worldBoundary:self.boundingBox];
@@ -38,14 +38,17 @@
     // loads the pirate.ccb we have set up in Spritebuilder
     CCNode* pirate = [CCBReader load:@"pirate"];
     // position the pirate at the bowl of the catapult
-    pirate.position = ccpAdd(_barrel1.position, ccp(16, 50));
+    pirate.position = ccpAdd(_barrel1.position, ccp(0, 0));
     
     // add the pirate to the physicsNode of this scene (because it has physics enabled)
     [_physicsNode addChild:pirate];
     
     // manually create & apply a force to launch the pirate
-    CGPoint launchDirection = ccp(60, 50);
-    CGPoint force = ccpMult(launchDirection, 400);
+    //CGPoint launchDirection = ccp(60, 50);
+    
+    float rotationRadians = CC_DEGREES_TO_RADIANS( _barrel1.rotation);
+    CGPoint directionVector = ccp(sinf(rotationRadians), cosf(rotationRadians));
+    CGPoint force = ccpMult(directionVector, 50000);
     [pirate.physicsBody applyForce:force];
     
     // ensure followed object is in visible are when starting
@@ -58,6 +61,6 @@
 
 -(void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair pirate:(CCNode *)nodeA Barrel:(CCNode *)nodeB
 {
-    CCLOG(@"Barrel collided with a pirate!");
+//    CCLOG(@"Barrel collided with a pirate!");
 }
 @end
