@@ -33,34 +33,47 @@
     [_levelNode addChild:level];
 }
 
+-(void)followPirateTest{
+    
+}
+
 // called on every touch in this scene
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    CCLOG(@"touch began!");
     CGPoint touchLocation = [touch locationInNode:_contentNode];
+    _currentpirate = [CCBReader load:@"pirate"];
+    //CGPoint piratePosition = [_catapultArm convertToWorldSpace:ccp(34, 138)];
+    _currentpirate.position = [_physicsNode convertToNodeSpace:touchLocation];
+[_physicsNode addChild:_currentpirate];
+    // follow the flying pirate
+    CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentpirate worldBoundary:self.boundingBox];
+    [_contentNode runAction:follow];
+
     
     // start catapult dragging when a touch inside of the catapult arm occurs
-    if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation))
-    {
+//    if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation))
+//    {
         // move the mouseJointNode to the touch position
-        _mouseJointNode.position = touchLocation;
-        
-        // setup a spring joint between the mouseJointNode and the catapultArm
-        _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0, 0) anchorB:ccp(34, 138) restLength:0.f stiffness:3000.f damping:150.f];
-        
-        // create a pirate from the ccb-file
-        _currentpirate = [CCBReader load:@"pirate"];
-        // initially position it on the scoop. 34,138 is the position in the node space of the _catapultArm
-        CGPoint piratePosition = [_catapultArm convertToWorldSpace:ccp(34, 138)];
-        // transform the world position to the node space to which the pirate will be added (_physicsNode)
-        _currentpirate.position = [_physicsNode convertToNodeSpace:piratePosition];
-        // add it to the physics world
-        [_physicsNode addChild:_currentpirate];
-        // we don't want the pirate to rotate in the scoop
-        _currentpirate.physicsBody.allowsRotation = FALSE;
-        
-        // create a joint to keep the pirate fixed to the scoop until the catapult is released
-        _pirateCatapultJoint = [CCPhysicsJoint connectedPivotJointWithBodyA:_currentpirate.physicsBody bodyB:_catapultArm.physicsBody anchorA:_currentpirate.anchorPointInPoints];
-    }
+//        _mouseJointNode.position = touchLocation;
+//        
+//        // setup a spring joint between the mouseJointNode and the catapultArm
+//        _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0, 0) anchorB:ccp(34, 138) restLength:0.f stiffness:3000.f damping:150.f];
+//    
+//        // create a pirate from the ccb-file
+//        _currentpirate = [CCBReader load:@"pirate"];
+//        // initially position it on the scoop. 34,138 is the position in the node space of the _catapultArm
+//        CGPoint piratePosition = [_catapultArm convertToWorldSpace:ccp(34, 138)];
+//        // transform the world position to the node space to which the pirate will be added (_physicsNode)
+//        _currentpirate.position = [_physicsNode convertToNodeSpace:piratePosition];
+//        // add it to the physics world
+//        [_physicsNode addChild:_currentpirate];
+//        // we don't want the pirate to rotate in the scoop
+//        _currentpirate.physicsBody.allowsRotation = FALSE;
+//        
+//        // create a joint to keep the pirate fixed to the scoop until the catapult is released
+//        _pirateCatapultJoint = [CCPhysicsJoint connectedPivotJointWithBodyA:_currentpirate.physicsBody bodyB:_catapultArm.physicsBody anchorA:_currentpirate.anchorPointInPoints];
+//    }
 }
 
 - (void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event

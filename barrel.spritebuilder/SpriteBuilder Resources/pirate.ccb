@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>3</integer>
+	<integer>4</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -41,7 +41,7 @@
 		<array>
 			<dict>
 				<key>UUID</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>baseClass</key>
 				<string>CCSprite</string>
 				<key>children</key>
@@ -49,7 +49,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>smiley</string>
+				<string>a1</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -69,7 +69,7 @@
 					<key>collisionType</key>
 					<string></string>
 					<key>cornerRadius</key>
-					<real>88.828125</real>
+					<real>127.4296875</real>
 					<key>density</key>
 					<real>1</real>
 					<key>dynamic</key>
@@ -81,8 +81,8 @@
 					<key>points</key>
 					<array>
 						<array>
-							<real>128</real>
-							<real>128</real>
+							<real>145</real>
+							<real>107.5</real>
 						</array>
 					</array>
 					<key>polygons</key>
@@ -144,7 +144,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>assets/smiley.png</string>
+							<string>assets/a1.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -161,6 +161,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
