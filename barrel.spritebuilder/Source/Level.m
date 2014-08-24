@@ -32,19 +32,14 @@
 -(void)update:(CCTime)dt
 {
 
-    CGRect screen = [[UIScreen mainScreen] bounds];
-    CGFloat width = CGRectGetWidth(screen);
-    //Bonus height.
-    CGFloat height = CGRectGetHeight(screen);
-
-    if (pirate.position.x < 0 || pirate.position.x > width) {
+    if (pirate.position.x < 0 || pirate.position.x > [[CCDirector sharedDirector] viewSize].width) {
         _isOffScreen = true;
         self._isOver = true;
         [pirate removeFromParent];
         
     }
     
-    if (pirate.position.y < 0 || pirate.position.y > height) {
+    if (pirate.position.y < 0 || pirate.position.y > [[CCDirector sharedDirector] viewSize].height) {
         _isOffScreen = true;
         self._isOver = true;
         [pirate removeFromParent];
