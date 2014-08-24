@@ -8,11 +8,13 @@
 
 #import "Level.h"
 #import "Barrel.h"
+static const CGFloat scrollSpeed = 80.f;
 
 @implementation Level
 {
     CCPhysicsNode *_physicsNode;
 
+    CCNode *_sceneTracker;
     CCNode *pirate;
     Barrel *_barrel1;
     Barrel *_barrel2;
@@ -27,6 +29,10 @@
     _currentBarrel = _barrel1;
     _physicsNode.collisionDelegate = self;
     _isOffScreen = false;
+    
+    CCActionFollow *follow = [CCActionFollow actionWithTarget:_sceneTracker worldBoundary:self.boundingBox];
+    [self runAction:follow];
+
 }
 
 -(void)update:(CCTime)dt
@@ -44,6 +50,11 @@
         self._isOver = true;
         [pirate removeFromParent];
     }
+    if(_currentBarrel.position.y > _sceneTracker.position.y){
+        _sceneTracker.position = ccp(_sceneTracker.position.x, _currentBarrel.position.y);
+    }
+    _sceneTracker.position = ccp(_sceneTracker.position.x, _sceneTracker.position.y + dt * scrollSpeed);
+
 }
 
 - (void)launchPirate {
@@ -65,7 +76,7 @@
         
         float rotationRadians = CC_DEGREES_TO_RADIANS( _currentBarrel.rotation);
         CGPoint directionVector = ccp(sinf(rotationRadians), cosf(rotationRadians));
-        CGPoint force = ccpMult(directionVector, 50000);
+        CGPoint force = ccpMult(directionVector, 35000);
         [pirate.physicsBody applyForce:force];
     }
 
