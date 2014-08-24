@@ -8,12 +8,15 @@
 
 #import "Level.h"
 #import "Barrel.h"
+static const CGFloat scrollSpeed = 80.f;
 
 @implementation Level
 {
     CCPhysicsNode *_physicsNode;
 
     CCNode *pirate;
+    CCNode *_sceneTracker;
+    CCNode *_topScene;
     Barrel *_barrel1;
     Barrel *_barrel2;
     Barrel *_currentBarrel;
@@ -22,11 +25,26 @@
 - (void)didLoadFromCCB {
     _currentBarrel = _barrel1;
     _physicsNode.collisionDelegate = self;
+    
+    CCActionFollow *follow = [CCActionFollow actionWithTarget:_sceneTracker worldBoundary:self.boundingBox];
+    [self runAction:follow];
+    
+
 }
 
 -(void)update:(CCTime)dt
 {
-    
+    //fast forward scoller
+    if(_currentBarrel.position.y > _sceneTracker.position.y){
+        _sceneTracker.position = ccp(_sceneTracker.position.x, _currentBarrel.position.y);
+    }
+    _sceneTracker.position = ccp(_sceneTracker.position.x, _sceneTracker.position.y + dt * scrollSpeed);
+
+}
+
+-(void) draw{
+//    [_sceneTracker setPosition:CGPointMake(_sceneTracker.position.x,_sceneTracker.position.y+1)];
+
 }
 
 - (void)launchPirate {
@@ -64,7 +82,7 @@
         _currentBarrel = nodeB;
     }
 
-    CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentBarrel worldBoundary:self.boundingBox];
-    [self runAction:follow];
+//    CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentBarrel worldBoundary:self.boundingBox];
+//    [self runAction:follow];
 }
 @end
