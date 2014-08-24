@@ -40,7 +40,7 @@
     _currentLevel = (Level *)[CCBReader load:@"levels/Level"];
     [_levelNode addChild:_currentLevel];
     
-    [self schedule:@selector(updateClock) interval:10];
+    [self schedule:@selector(updateClock) interval:1.0];
     _time = 0;
 }
 
