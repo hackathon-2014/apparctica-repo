@@ -37,15 +37,23 @@ static const CGFloat scrollSpeed = 80.f;
 
 -(void)update:(CCTime)dt
 {
-    if (pirate.position.x > [self contentSize].width / 2) {
+
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    CGFloat width = CGRectGetWidth(screen);
+    //Bonus height.
+    CGFloat height = CGRectGetHeight(screen);
+
+    if (pirate.position.x < 0 || pirate.position.x > width) {
         _isOffScreen = true;
         self._isOver = true;
+        [pirate removeFromParent];
         
     }
     
-    if (pirate.position.y > [self contentSize].height / 2) {
+    if (pirate.position.y < 0 || pirate.position.y > height) {
         _isOffScreen = true;
         self._isOver = true;
+        [pirate removeFromParent];
     }
     if(_currentBarrel.position.y > _sceneTracker.position.y){
         _sceneTracker.position = ccp(_sceneTracker.position.x, _currentBarrel.position.y);

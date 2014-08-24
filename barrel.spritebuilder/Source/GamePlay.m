@@ -23,6 +23,7 @@
     Level *_currentLevel;
     CCLabelTTF *_gameClock;
     CCLabelTTF *_gameOverText;
+    CCLabelTTF *_finalScore;
     
     int *_time;
 }
@@ -45,6 +46,7 @@
     _time = 0;
     
     _gameOverText.visible = false;
+    _finalScore.visible = false;
 }
 
 -(void)updateClock
@@ -57,6 +59,15 @@
 {
     if (_currentLevel._isOver == true) {
         _gameOverText.visible = true;
+        _finalScore.visible = true;
+        int score = _time - 100;
+        
+        if (score < 100) {
+            score = 0;
+        }
+        
+        [_finalScore setString:[NSString stringWithFormat:@"%d", score]];
+        
     }
 }
 
