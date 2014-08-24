@@ -45,7 +45,7 @@ static const CGFloat scrollSpeed = 80.f;
         
     }
     
-    if (pirate.position.y < 0 || pirate.position.y > [[CCDirector sharedDirector] viewSize].height) {
+    if (pirate.position.y < 0 || pirate.position.y > _currentBarrel.position.y + 0650) {
         _isOffScreen = true;
         self._isOver = true;
         [pirate removeFromParent];

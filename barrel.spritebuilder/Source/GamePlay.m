@@ -60,6 +60,7 @@
     if (_currentLevel._isOver == true) {
         _gameOverText.visible = true;
         _finalScore.visible = true;
+        self.userInteractionEnabled = FALSE;
         int score = _time - 100;
         
         if (score < 100) {
