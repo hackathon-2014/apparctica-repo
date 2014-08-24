@@ -14,27 +14,39 @@ static const CGFloat scrollSpeed = 80.f;
 {
     CCPhysicsNode *_physicsNode;
 
-    CCNode *pirate;
     CCNode *_sceneTracker;
-    CCNode *_topScene;
+    CCNode *pirate;
     Barrel *_barrel1;
     Barrel *_barrel2;
     Barrel *_currentBarrel;
+    
+    bool *_isOffScreen;
 }
+
+@synthesize _isOver = _isOver;
 
 - (void)didLoadFromCCB {
     _currentBarrel = _barrel1;
     _physicsNode.collisionDelegate = self;
+    _isOffScreen = false;
     
     CCActionFollow *follow = [CCActionFollow actionWithTarget:_sceneTracker worldBoundary:self.boundingBox];
     [self runAction:follow];
-    
 
 }
 
 -(void)update:(CCTime)dt
 {
-    //fast forward scoller
+    if (pirate.position.x > [self contentSize].width / 2) {
+        _isOffScreen = true;
+        self._isOver = true;
+        
+    }
+    
+    if (pirate.position.y > [self contentSize].height / 2) {
+        _isOffScreen = true;
+        self._isOver = true;
+    }
     if(_currentBarrel.position.y > _sceneTracker.position.y){
         _sceneTracker.position = ccp(_sceneTracker.position.x, _currentBarrel.position.y);
     }
@@ -42,18 +54,14 @@ static const CGFloat scrollSpeed = 80.f;
 
 }
 
--(void) draw{
-//    [_sceneTracker setPosition:CGPointMake(_sceneTracker.position.x,_sceneTracker.position.y+1)];
-
-}
-
 - (void)launchPirate {
 //    CCLOG(@"%f", _barrel1.rotation);
-    
+
     //one at a time
     if (1) {
         // loads the pirate.ccb we have set up in Spritebuilder
         pirate = [CCBReader load:@"pirate"];
+        
         // position the pirate at the bowl of the catapult
         pirate.position = ccpAdd(_currentBarrel.position, ccp(0, 0));
         
@@ -65,7 +73,7 @@ static const CGFloat scrollSpeed = 80.f;
         
         float rotationRadians = CC_DEGREES_TO_RADIANS( _currentBarrel.rotation);
         CGPoint directionVector = ccp(sinf(rotationRadians), cosf(rotationRadians));
-        CGPoint force = ccpMult(directionVector, 50000);
+        CGPoint force = ccpMult(directionVector, 35000);
         [pirate.physicsBody applyForce:force];
     }
 
@@ -82,7 +90,7 @@ static const CGFloat scrollSpeed = 80.f;
         _currentBarrel = nodeB;
     }
 
-//    CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentBarrel worldBoundary:self.boundingBox];
-//    [self runAction:follow];
+    CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentBarrel worldBoundary:self.boundingBox];
+    [self runAction:follow];
 }
 @end
