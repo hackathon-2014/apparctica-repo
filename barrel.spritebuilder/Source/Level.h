@@ -11,6 +11,7 @@
 
 @interface Level : CCNode <CCPhysicsCollisionDelegate>
 
+@property bool *_isOver;
 
 - (void)launchPirate;
 @end

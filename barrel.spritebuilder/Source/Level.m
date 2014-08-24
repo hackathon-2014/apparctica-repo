@@ -17,25 +17,38 @@
     Barrel *_barrel1;
     Barrel *_barrel2;
     Barrel *_currentBarrel;
+    
+    bool *_isOffScreen;
 }
+
+@synthesize _isOver = _isOver;
 
 - (void)didLoadFromCCB {
     _currentBarrel = _barrel1;
     _physicsNode.collisionDelegate = self;
+    _isOffScreen = false;
 }
 
 -(void)update:(CCTime)dt
 {
+    if (_currentpirate.position.x > [self contentSize].width / 2) {
+        _isOffScreen = true;
+        self._isOver = true;
+        
+    }
     
+    if (_currentpirate.position.y > [self contentSize].height / 2) {
+        _isOffScreen = true;
+        self._isOver = true;
+    }
 }
 
 - (void)launchPirate {
 //    CCLOG(@"%f", _barrel1.rotation);
-    
-    
 
     // loads the pirate.ccb we have set up in Spritebuilder
     CCNode* pirate = [CCBReader load:@"pirate"];
+    _currentpirate = pirate;
     // position the pirate at the bowl of the catapult
     pirate.position = ccpAdd(_currentBarrel.position, ccp(0, 0));
     

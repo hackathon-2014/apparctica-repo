@@ -22,6 +22,7 @@
     CCNode *_barrel;
     Level *_currentLevel;
     CCLabelTTF *_gameClock;
+    CCLabelTTF *_gameOverText;
     
     int *_time;
 }
@@ -42,12 +43,21 @@
     
     [self schedule:@selector(updateClock) interval:1.0];
     _time = 0;
+    
+    _gameOverText.visible = false;
 }
 
 -(void)updateClock
 {
     _time++;
     _gameClock.string = [NSString stringWithFormat:@"%d", _time];
+}
+
+-(void)update:(CCTime)dt
+{
+    if (_currentLevel._isOver == true) {
+        _gameOverText.visible = true;
+    }
 }
 
 
